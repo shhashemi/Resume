@@ -438,6 +438,107 @@
       padding: 7px;
       border-top: 1px solid var(--line)
     }
+
+
+    /* Responsive layout + subtle motion */
+    html { scroll-behavior: smooth; }
+    body { min-height: 100vh; overflow-x: hidden; }
+    .page {
+      width: min(calc(100% - 32px), 1120px);
+      height: auto;
+      min-height: 100vh;
+      overflow: visible;
+      flex: 0 1 auto;
+      margin-inline: auto;
+      border: 1px solid rgba(131, 146, 171, .12);
+      border-radius: 20px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.28);
+      animation: pageEnter .7s ease both;
+    }
+    header { padding: clamp(20px, 4vw, 38px); gap: clamp(14px, 2.5vw, 24px); }
+    .mono { width: clamp(64px, 9vw, 100px); height: clamp(64px, 9vw, 100px); border-radius: 22px; overflow: hidden; }
+    .mono img { height: 100%; object-fit: cover; display: block; }
+    .hd { min-width: 0; }
+    .hd h1 { font-size: clamp(24px, 3.5vw, 38px); }
+    .hd .role { font-size: clamp(14px, 1.7vw, 18px); }
+    .hd .en { overflow-wrap: anywhere; }
+    .hd .sub { line-height: 1.9; }
+    .body { flex: initial; min-height: auto; }
+    aside { width: 32%; min-width: 0; padding: clamp(20px, 3vw, 32px) clamp(14px, 2.2vw, 24px); }
+    main { min-width: 0; padding: clamp(20px, 3vw, 34px); }
+    section { margin-bottom: clamp(20px, 3vw, 30px); }
+    .contact li { min-width: 0; align-items: flex-start; font-size: clamp(11px, 1.05vw, 13px); }
+    .contact li > a, .contact li > span:not(.ic) { min-width: 0; overflow-wrap: anywhere; }
+    .summary { font-size: clamp(13px, 1.15vw, 15px); }
+    .item .top { flex-wrap: wrap; align-items: flex-start; }
+    .item .ttl { font-size: clamp(13px, 1.25vw, 15px); }
+    .item .date { white-space: normal; }
+    .item li { font-size: clamp(12px, 1.05vw, 13px); }
+    .award .tx, .sk .row { overflow-wrap: anywhere; }
+    a { transition: color .2s ease, opacity .2s ease; }
+    a:hover { color: var(--accent); }
+    .tag { transition: transform .2s ease, border-color .2s ease, background .2s ease; }
+    .tag:hover { transform: translateY(-2px); border-color: var(--accent); background: rgba(45,212,191,.08); }
+    .bar i { transform-origin: right; animation: barGrow 1.1s cubic-bezier(.2,.7,.2,1) both; }
+    section { animation: riseIn .65s ease both; }
+    section:nth-child(2) { animation-delay: .08s; }
+    section:nth-child(3) { animation-delay: .16s; }
+    section:nth-child(4) { animation-delay: .24s; }
+    .item { transition: transform .22s ease; }
+    .item:hover { transform: translateX(-3px); }
+    footer { line-height: 1.9; overflow-wrap: anywhere; padding: 12px 18px; }
+
+    @keyframes pageEnter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes barGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    @media (max-width: 760px) {
+      body { display: block; padding: 12px 0; }
+      .page { width: calc(100% - 24px); border-radius: 16px; }
+      header { padding: 22px 18px; }
+      .mono { width: 66px; height: 66px; border-radius: 16px; }
+      .mono img { border-radius: 16px; }
+      .hd .en { font-size: 11px; letter-spacing: 0; }
+      .body { flex-direction: column; }
+      aside { width: 100%; border-left: 0; border-bottom: 1px solid var(--line); padding: 22px 18px; }
+      main { padding: 24px 18px; }
+      .contact ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 12px; }
+      .contact li { margin-bottom: 0; }
+      aside section { margin-bottom: 24px; }
+      aside section:last-child { margin-bottom: 0; }
+      .item { padding-right: 16px; }
+      .item .top { gap: 5px 10px; }
+    }
+    @media (max-width: 480px) {
+      .page { width: calc(100% - 16px); }
+      header { align-items: flex-start; gap: 13px; padding: 18px 14px; }
+      .mono { width: 54px; height: 54px; border-radius: 13px; }
+      .mono img { border-radius: 13px; }
+      .hd h1 { font-size: 22px; }
+      .hd .role { font-size: 13px; line-height: 1.8; }
+      .hd .en { font-size: 10px; }
+      .hd .sub { font-size: 11px; }
+      .contact ul { grid-template-columns: minmax(0, 1fr); }
+      h2 { font-size: 14px; }
+      .item .top { display: block; }
+      .item .date, .item .badge { display: inline-block; margin-top: 5px; }
+      .stack { gap: 6px; }
+      .tag, .lnk { overflow-wrap: anywhere; }
+      footer { font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+    @media print {
+      @page { size: A4; margin: 8mm; }
+      html, body { background: var(--bg) !important; display: block !important; padding: 0 !important; }
+      .page { width: 100%; min-height: 0; height: auto; margin: 0; border: 0; border-radius: 0; box-shadow: none; overflow: visible; animation: none; }
+      .body { flex-direction: row; }
+      aside { width: 32%; }
+      section, .item { break-inside: avoid; animation: none !important; }
+      a { text-decoration: none !important; }
+    }
+
   </style>
 </head>
 
@@ -446,7 +547,7 @@
 
     <header>
       <div class="mono">
-        <img src="./images/Profile.png">
+        <img src="./images/Profile.png" alt="تصویر پروفایل سید حسین هاشمی" loading="eager">
       </div>
       <div class="hd">
         <h1>سید حسین هاشمی</h1>
@@ -619,17 +720,7 @@
     <footer>سید حسین هاشمی · مشهد · ۰۹۳۰ ۶۹۷ ۳۴۶۷ · <a
         href="mailto:seyedhoseinhashemi566@gmail.com">seyedhoseinhashemi566@gmail.com</a></footer>
   </div>
-  <script>
-    // روی صفحه‌ی کوچک (موبایل) رزومه را متناسب با عرض صفحه کوچک می‌کند؛ روی چاپ و PDF اثری ندارد
-    (function () {
-      try {
-        var p = document.getElementById('page'), w = 794;
-        function fit() { var s = Math.min(1, (window.innerWidth - 8) / w); p.style.zoom = s < 1 ? s : ''; }
-        window.addEventListener('resize', fit); fit();
-        window.matchMedia('print').addEventListener('change', function (e) { if (e.matches) p.style.zoom = ''; else fit(); });
-      } catch (e) { }
-    })();
-  </script>
+
 </body>
 
 </html>
