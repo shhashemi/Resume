@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>رزومه سید حسین هاشمی | برنامه‌نویس ASP.NET Core</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: "VazirLocal";
+      font-weight: 400;
+      src: local("Vazirmatn"), url("fonts/Vazirmatn-Regular.ttf") format("truetype")
+    }
+
+    @font-face {
+      font-family: "VazirLocal";
+      font-weight: 700;
+      src: local("Vazirmatn Bold"), url("fonts/Vazirmatn-Bold.ttf") format("truetype")
+    }
+
+    @page {
+      size: 210mm 297mm;
+      margin: 0;
+    }
+
+    :root {
+      --bg: #0a0e16;
+      --panel: #111827;
+      --panel2: #151d2e;
+      --line: #223049;
+      --text: #d6deeb;
+      --muted: #8392ab;
+      --white: #f5f8ff;
+      --accent: #2dd4bf;
+      --accent2: #38bdf8;
+      --gold: #fbbf24;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      background: var(--bg)
+    }
+
+    body {
+      font-family: "Vazirmatn", "VazirLocal", "IRANSans", "IRANSansX", "DejaVu Sans", "FreeSerif", sans-serif;
+      color: var(--text);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    @media screen {
+      body {
+        display: flex;
+        justify-content: center;
+        padding: 18px 0
+      }
+    }
+
+    .page {
+      width: 210mm;
+      height: 297mm;
+      position: relative;
+      overflow: hidden;
+      flex: none;
+      background:
+        radial-gradient(520px 320px at 100% 0%, rgba(45, 212, 191, .13), transparent 70%),
+        radial-gradient(420px 300px at 0% 100%, rgba(56, 189, 248, .08), transparent 70%),
+        var(--bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 24px 32px 20px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      border-bottom: 1px solid var(--line)
+    }
+
+    .mono {
+      width: 68px;
+      height: 68px;
+      border-radius: 18px;
+      flex: none;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #06201c;
+      font-weight: 700;
+      font-size: 40.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 0 5px rgba(45, 212, 191, .12);
+    }
+
+    .mono img {
+      width: 100%;
+      border-radius: 18px;
+    }
+
+    .hd h1 {
+      font-size: 33.6px;
+      color: var(--white);
+      font-weight: 700;
+      line-height: 1.3
+    }
+
+    .hd .role {
+      font-size: 16.2px;
+      color: var(--accent);
+      margin-top: 1px
+    }
+
+    .hd .en {
+      font-size: 12.3px;
+      color: var(--muted);
+      direction: ltr;
+      text-align: right;
+      margin-top: 1px;
+      letter-spacing: .5px
+    }
+
+    .hd .sub {
+      font-size: 12.7px;
+      color: var(--muted);
+      margin-top: 5px
+    }
+
+    .body {
+      flex: 1;
+      display: flex;
+      min-height: 0
+    }
+
+    aside {
+      width: 70mm;
+      flex: none;
+      background: linear-gradient(180deg, var(--panel), #0e1522);
+      border-left: 1px solid var(--line);
+      padding: 26px 18px
+    }
+
+    main {
+      flex: 1;
+      padding: 26px 24px 16px 26px
+    }
+
+    h2 {
+      font-size: 14.1px;
+      color: var(--white);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px
+    }
+
+    h2::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 2px;
+      background: var(--accent);
+      flex: none
+    }
+
+    h2::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--line)
+    }
+
+    section {
+      margin-bottom: 26px
+    }
+
+    aside section:last-child,
+    main section:last-child {
+      margin-bottom: 0
+    }
+
+    .ltr {
+      direction: ltr;
+      unicode-bidi: embed;
+      text-align: left;
+      line-height: 1.5
+    }
+
+    .wrap {
+      word-break: break-all
+    }
+
+    .contact li {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 10.8px;
+      margin-bottom: 7px;
+      color: var(--text)
+    }
+
+    .contact .ic {
+      width: 21px;
+      height: 21px;
+      border-radius: 6px;
+      flex: none;
+      background: rgba(45, 212, 191, .12);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11.8px
+    }
+
+    .award {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      margin-bottom: 12px
+    }
+
+    .award .yr {
+      flex: none;
+      min-width: 38px;
+      text-align: center;
+      font-size: 11.2px;
+      color: var(--gold);
+      background: rgba(251, 191, 36, .1);
+      border: 1px solid rgba(251, 191, 36, .35);
+      border-radius: 7px;
+      padding: 2px 0;
+      margin-top: 1px
+    }
+
+    .award .tx {
+      font-size: 11.5px;
+      line-height: 1.7;
+      color: var(--white)
+    }
+
+    .award .tx small {
+      display: block;
+      color: var(--muted);
+      font-size: 10.5px
+    }
+
+    .award.top .yr {
+      background: rgba(251, 191, 36, .2)
+    }
+
+    .sk {
+      margin-bottom: 11px
+    }
+
+    .sk .row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 11.5px;
+      margin-bottom: 3px;
+      gap: 6px
+    }
+
+    .sk .row span:last-child {
+      color: var(--muted);
+      font-size: 10.3px;
+      white-space: nowrap
+    }
+
+    .sk .nm {
+      direction: ltr;
+      unicode-bidi: embed;
+      color: var(--white)
+    }
+
+    .bar {
+      height: 4px;
+      border-radius: 4px;
+      background: var(--line);
+      overflow: hidden
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(270deg, var(--accent), var(--accent2))
+    }
+
+    .summary {
+      font-size: 12.7px;
+      line-height: 2;
+      color: var(--text)
+    }
+
+    .item {
+      position: relative;
+      padding-right: 17px;
+      margin-bottom: 19px
+    }
+
+    .item::before {
+      content: "";
+      position: absolute;
+      right: 3px;
+      top: 7px;
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent)
+    }
+
+    .item::after {
+      content: "";
+      position: absolute;
+      right: 7px;
+      top: 19px;
+      bottom: -19px;
+      width: 1px;
+      background: var(--line)
+    }
+
+    .item:last-child::after {
+      display: none
+    }
+
+    .item .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px
+    }
+
+    .item .ttl {
+      font-size: 13.7px;
+      color: var(--white);
+      font-weight: 700
+    }
+
+    .item .date {
+      font-size: 11.2px;
+      color: var(--accent);
+      white-space: nowrap
+    }
+
+    .item .org {
+      font-size: 11.4px;
+      color: var(--muted);
+      margin: 1px 0 3px
+    }
+
+    .item li {
+      list-style: none;
+      font-size: 11.6px;
+      line-height: 1.85;
+      display: flex;
+      gap: 7px
+    }
+
+    .item li::before {
+      content: "–";
+      color: var(--accent);
+      flex: none
+    }
+
+    .stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 5px;
+      align-items: center
+    }
+
+    .tag {
+      font-size: 10.5px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--white);
+      background: var(--panel2);
+      border: 1px solid var(--line);
+      direction: ltr
+    }
+
+    .tag.hl {
+      border-color: rgba(45, 212, 191, .55);
+      color: var(--accent)
+    }
+
+    .badge {
+      font-size: 10.5px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      color: var(--gold);
+      background: rgba(251, 191, 36, .1);
+      border: 1px solid rgba(251, 191, 36, .35)
+    }
+
+    .lnk {
+      font-size: 10.5px;
+      color: var(--accent2);
+      direction: ltr;
+      unicode-bidi: embed
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none
+    }
+
+    a:hover {
+      text-decoration: underline
+    }
+
+    a.lnk {
+      color: var(--accent2)
+    }
+
+    .item .org a {
+      color: var(--accent2)
+    }
+
+    footer {
+      text-align: center;
+      font-size: 10.1px;
+      color: var(--muted);
+      padding: 7px;
+      border-top: 1px solid var(--line)
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page" id="page">
+
+    <header>
+      <div class="mono">
+        <img src="./images/Profile.png">
+      </div>
+      <div class="hd">
+        <h1>سید حسین هاشمی</h1>
+        <div class="role">برنامه‌نویس Backend · <span dir="ltr">ASP.NET Core</span></div>
+        <div class="en">Seyed Hosein Hashemi — ASP.NET Core Backend Developer</div>
+        <div class="sub">دانشجوی علوم کامپیوتر، دانشگاه فردوسی مشهد · رتبه‌ی ۲ کشوری برنامه‌نویسی وب با <span
+            dir="ltr">ASP.NET Core</span></div>
+      </div>
+    </header>
+
+    <div class="body">
+      <aside>
+        <section class="contact">
+          <h2>اطلاعات تماس</h2>
+          <ul>
+            <li><span class="ic">✉</span><a class="ltr"
+                href="mailto:seyedhoseinhashemi566@gmail.com">seyedhoseinhashemi566@gmail.com</a></li>
+            <li><span class="ic">✉</span><a class="ltr"
+                href="mailto:shhashemi1385@gmail.com">shhashemi1385@gmail.com</a></li>
+            <li><span class="ic">☎</span><a class="ltr" href="tel:+989306973467">0930 697 3467</a></li>
+            <li><span class="ic">⌂</span><span>مشهد، ایران</span></li>
+            <li><span class="ic">⌥</span><a class="ltr" href="https://github.com/shhashemi">github.com/shhashemi</a>
+            </li>
+            <li><span class="ic">in</span><a class="ltr"
+                href="https://www.linkedin.com/in/seyedhosein-hashemi-711177293/">linkedin.com/in/seyedhosein-hashemi-711177293</a>
+            </li>
+            <li><span class="ic">K</span><a class="ltr"
+                href="https://www.karlancer.com/profile/292654">karlancer.com/profile/292654</a></li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>افتخارات</h2>
+          <div class="award top"><span class="yr">۱۴۰۱</span><span class="tx">رتبه‌ی ۲ کشور<small>برنامه‌نویسی وب با
+                <span dir="ltr">ASP.NET Core</span></small></span></div>
+          <div class="award"><span class="yr">۱۳۹۹</span><span class="tx">رتبه‌ی ۵ کشور<small>برنامه‌نویسی
+                موبایل</small></span></div>
+          <div class="award"><span class="yr">۱۳۹۷</span><span class="tx">مقام اول کشور<small>بازی‌سازی
+                اسکرچ</small></span></div>
+          <div style="font-size:10.1px;color:var(--muted);margin-top:2px">مسابقات پژوهش‌سراهای کشور</div>
+        </section>
+
+        <section>
+          <h2>مهارت‌ها</h2>
+          <div class="sk">
+            <div class="row"><span class="nm">C#</span><span>بسیار قوی</span></div>
+            <div class="bar"><i style="width:96%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">ASP.NET Core / MVC</span><span>بسیار قوی</span></div>
+            <div class="bar"><i style="width:96%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">SQL Server</span><span>قوی</span></div>
+            <div class="bar"><i style="width:80%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">HTML / CSS</span><span>نسبتاً قوی</span></div>
+            <div class="bar"><i style="width:68%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">PHP</span><span>نسبتاً قوی</span></div>
+            <div class="bar"><i style="width:68%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">JavaScript / Node.js</span><span>متوسط</span></div>
+            <div class="bar"><i style="width:52%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">C</span><span>متوسط</span></div>
+            <div class="bar"><i style="width:52%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span class="nm">MySQL</span><span>متوسط</span></div>
+            <div class="bar"><i style="width:52%"></i></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>زبان‌ها</h2>
+          <div class="sk">
+            <div class="row"><span>فارسی</span><span>زبان مادری</span></div>
+            <div class="bar"><i style="width:100%"></i></div>
+          </div>
+          <div class="sk">
+            <div class="row"><span>انگلیسی</span><span>خواندن و نوشتن · متوسط رو به بالا</span></div>
+            <div class="bar"><i style="width:72%"></i></div>
+          </div>
+        </section>
+      </aside>
+
+      <main>
+        <section>
+          <h2>درباره من</h2>
+          <p class="summary">
+            دانشجوی علوم کامپیوتر دانشگاه فردوسی مشهد و برنامه‌نویس Backend با تسلط بسیار خوب بر <span
+              dir="ltr">C#</span> و <span dir="ltr">ASP.NET Core / MVC</span> و تجربه‌ی کار با <span dir="ltr">SQL
+              Server</span>.
+            سازنده‌ی وب‌سایت ابزارهای کاربردی شعبه‌ی ۶۷۶۷ بیمه دی، که به‌تنهایی طراحی و تکمیل شده و هم‌اکنون آنلاین است.
+            به‌دنبال همکاری در حوزه‌ی برنامه‌نویسی <span dir="ltr">ASP.NET Core Backend</span>.
+          </p>
+        </section>
+
+        <section>
+          <h2>تحصیلات</h2>
+          <div class="item">
+            <div class="top"><span class="ttl">کارشناسی علوم کامپیوتر</span><span class="date">۱۴۰۴ تا اکنون</span>
+            </div>
+            <div class="org">دانشگاه فردوسی مشهد · فارغ‌التحصیلی پیش‌بینی‌شده: ۱۴۰۹</div>
+          </div>
+        </section>
+
+        <section>
+          <h2>پروژه‌ها</h2>
+
+          <div class="item">
+            <div class="top"><span class="ttl">وب‌سایت ابزارهای کاربردی شعبه ۶۷۶۷ بیمه دی</span><span
+                class="date">۱۴۰۴</span></div>
+            <div class="org">پروژه‌ی اصلی · تک‌نفره · <a class="ltr" style="display:inline-block"
+                href="https://tools.topsos.ir">tools.topsos.ir</a></div>
+            <ul>
+              <li>طراحی و تکمیل کامل پروژه به‌صورت تک‌نفره، از ایده تا استقرار</li>
+              <li>پیاده‌سازی با فریم‌ورک ASP.NET Core؛ هم‌اکنون آنلاین روی دامنه‌ی اختصاصی</li>
+            </ul>
+            <div class="stack"><span class="tag hl">ASP.NET Core</span><span class="tag hl">C#</span><a class="lnk"
+                href="https://klnc.ir/l/jd7pn9dj">جزئیات کامل: klnc.ir/l/jd7pn9dj</a></div>
+          </div>
+
+          <div class="item">
+            <div class="top"><span class="ttl">«متد» — سامانه‌ی مدیریت تکالیف دانش‌آموزان</span><span class="badge">مقام
+                ۲ کشوری</span></div>
+            <div class="org">ساخته‌شده برای مسابقات پژوهش‌سراهای کشور</div>
+            <ul>
+              <li>مدیریت ساده‌تر تکالیف دانش‌آموزان توسط اساتید و محاسبه‌ی آسان‌تر نمرات</li>
+              <li>پیام‌رسان داخلی برای ارتباط اساتید و دانش‌آموزان</li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="top"><span class="ttl">بازی شطرنج تغییریافته</span><span class="date">۱۴۰۴</span></div>
+            <div class="org">پروژه‌ی دانشگاهی · نمره‌ی کامل</div>
+            <ul>
+              <li>طراحی تک‌نفره‌ی منطق و گرافیک بازی، با کمترین استفاده از توابع آماده</li>
+            </ul>
+            <div class="stack"><span class="tag hl">C</span><span class="tag hl">SDL3</span><a class="lnk"
+                href="https://github.com/shhashemi/ChessWithC">github.com/shhashemi/ChessWithC</a></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>تجربه‌ی فریلنسری و فنی</h2>
+          <div class="item">
+            <div class="top"><span class="ttl">فریلنسر در کارلنسر</span></div>
+            <div class="org"><a class="ltr" style="display:inline-block"
+                href="https://www.karlancer.com/profile/292654">karlancer.com/profile/292654</a></div>
+            <ul>
+              <li>انجام تعداد زیادی پروژه‌ی فریلنسری ربات تلگرام با PHP؛ جزئیات در پروفایل کارلنسر</li>
+            </ul>
+          </div>
+          <div class="item">
+            <div class="top"><span class="ttl">راه‌اندازی سرور روی لینوکس Ubuntu</span></div>
+            <ul>
+              <li>دو بار راه‌اندازی سرور ماینکرفت روی سرور لینوکس</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>سید حسین هاشمی · مشهد · ۰۹۳۰ ۶۹۷ ۳۴۶۷ · <a
+        href="mailto:seyedhoseinhashemi566@gmail.com">seyedhoseinhashemi566@gmail.com</a></footer>
+  </div>
+  <script>
+    // روی صفحه‌ی کوچک (موبایل) رزومه را متناسب با عرض صفحه کوچک می‌کند؛ روی چاپ و PDF اثری ندارد
+    (function () {
+      try {
+        var p = document.getElementById('page'), w = 794;
+        function fit() { var s = Math.min(1, (window.innerWidth - 8) / w); p.style.zoom = s < 1 ? s : ''; }
+        window.addEventListener('resize', fit); fit();
+        window.matchMedia('print').addEventListener('change', function (e) { if (e.matches) p.style.zoom = ''; else fit(); });
+      } catch (e) { }
+    })();
+  </script>
+</body>
+
+</html>
